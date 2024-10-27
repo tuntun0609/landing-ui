@@ -6,6 +6,7 @@ import {
   ComponentPreviewCode,
   ComponentPreviewContent,
 } from '../component-preview'
+import { Step, Steps } from '../step'
 
 import { CopyCodeButton } from './copy-code-btn'
 import CustomLink from './custom-link'
@@ -81,6 +82,8 @@ const MDXComponents: MDXComponentsType = {
   ComponentPreview,
   ComponentPreviewContent,
   ComponentPreviewCode,
+  Step,
+  Steps,
 }
 
 export default MDXComponents

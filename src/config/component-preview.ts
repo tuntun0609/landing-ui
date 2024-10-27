@@ -5,4 +5,8 @@ export const componentPreviewConfig = {
     name: 'RainbowButton',
     demo: lazy(() => import('@/components/registry/rainbox-button/demo')),
   },
+  ThemeToggle: {
+    name: 'ThemeToggle',
+    demo: lazy(() => import('@/components/registry/theme-toggle/demo')),
+  },
 }

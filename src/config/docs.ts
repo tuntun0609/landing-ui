@@ -20,8 +20,8 @@ export const docsConfig: DocsConfig[] = [
         href: '/docs/components/rainbow-button',
       },
       {
-        title: '3D Card',
-        href: '/docs/components/3d-card',
+        title: 'Theme Toggle',
+        href: '/docs/components/theme-toggle',
       },
     ],
   },
