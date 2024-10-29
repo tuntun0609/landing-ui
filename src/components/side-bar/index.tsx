@@ -12,7 +12,7 @@ const Sidebar = () => (
       <div key={item.title} className="mb-4">
         <MenuHeader>{item.title}</MenuHeader>
         {item.items?.map(subItem => (
-          <MenuItem key={subItem.title} href={subItem.href}>
+          <MenuItem key={subItem.title} href={subItem.href ?? ''}>
             {subItem.title}
           </MenuItem>
         ))}
