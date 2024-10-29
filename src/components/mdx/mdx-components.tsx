@@ -8,24 +8,19 @@ import {
 } from '../component-preview'
 import { Step, Steps } from '../step'
 
+import { CodeCollapsibleWrapper } from './code-collapsible-wrapper'
 import { CopyCodeButton } from './copy-code-btn'
 import CustomLink from './custom-link'
 
 import type { MDXComponents as MDXComponentsType } from 'mdx/types'
 
 const MDXComponents: MDXComponentsType = {
-  h1: props => <h1 {...props} className={cn('mb-4 mt-6 text-4xl font-bold', props.className)} />,
-  h2: props => (
-    <h2 {...props} className={cn('mb-4 mt-6 pb-2 text-3xl font-semibold', props.className)} />
-  ),
-  h3: props => (
-    <h3 {...props} className={cn('mb-4 mt-6 text-2xl font-semibold', props.className)} />
-  ),
-  h4: props => <h4 {...props} className={cn('mb-4 mt-6 text-xl font-semibold', props.className)} />,
-  h5: props => <h5 {...props} className={cn('mb-4 mt-6 text-lg font-semibold', props.className)} />,
-  h6: props => (
-    <h6 {...props} className={cn('mb-4 mt-6 text-base font-semibold', props.className)} />
-  ),
+  h1: props => <h1 {...props} className={cn('my-6 text-4xl font-bold', props.className)} />,
+  h2: props => <h2 {...props} className={cn('my-6 text-3xl font-semibold', props.className)} />,
+  h3: props => <h3 {...props} className={cn('my-6 text-2xl font-semibold', props.className)} />,
+  h4: props => <h4 {...props} className={cn('my-6 text-xl font-semibold', props.className)} />,
+  h5: props => <h5 {...props} className={cn('my-6 text-lg font-semibold', props.className)} />,
+  h6: props => <h6 {...props} className={cn('my-6 text-base font-semibold', props.className)} />,
   p: props => <p {...props} className={cn('mb-4 mt-0', props.className)} />,
   a: props => (
     <CustomLink
@@ -84,6 +79,7 @@ const MDXComponents: MDXComponentsType = {
   ComponentPreviewCode,
   Step,
   Steps,
+  CodeCollapsibleWrapper,
 }
 
 export default MDXComponents

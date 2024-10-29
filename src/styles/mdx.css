@@ -86,16 +86,16 @@ pre code {
 	vertical-align: middle;
 }
 
-#article ul {
+.article ul {
 	list-style: disc;
 }
 
-#article ul ul {
-	@apply mt-2;
+.article ul ul {
+	@apply mt-3;
 	list-style: circle;
 }
 
-#article ul ul ul {
-	@apply mt-2;
+.article ul ul ul {
+	@apply mt-3;
 	list-style: square;
 }

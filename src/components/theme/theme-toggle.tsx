@@ -1,7 +1,7 @@
 'use client'
 
 import { MouseEvent } from 'react'
-import { Moon, Sun, SunMoon } from 'lucide-react'
+import { Laptop, Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
 import { Button } from '@/components/ui/button'
@@ -21,7 +21,7 @@ const themeConfig = [
   },
   {
     label: 'System',
-    icon: <SunMoon className="h-4 w-4" />,
+    icon: <Laptop className="h-4 w-4" />,
     value: 'system',
   },
 ]

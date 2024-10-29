@@ -1,7 +1,6 @@
-import localFont from 'next/font/local'
-
 import Footer from '@/components/footer'
 import Header from '@/components/header'
+import { TailwindIndicator } from '@/components/tailwind-Indicator'
 import { ThemeProvider } from '@/components/theme'
 
 import type { Metadata } from 'next'
@@ -32,6 +31,7 @@ export default function RootLayout({
             <Header />
             <div className="min-h-[calc(100vh-3.5rem)] border-b">{children}</div>
             <Footer />
+            <TailwindIndicator />
           </div>
         </ThemeProvider>
       </body>

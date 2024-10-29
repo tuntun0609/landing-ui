@@ -4,7 +4,7 @@ export function Step({ className, ...props }: React.ComponentProps<'h3'>) {
   return (
     <h3
       className={cn(
-        'font-heading my-8 scroll-m-20 text-xl font-semibold tracking-tight',
+        'font-heading my-6 scroll-m-20 text-xl font-semibold tracking-tight',
         className
       )}
       {...props}

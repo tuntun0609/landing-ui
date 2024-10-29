@@ -1,6 +1,6 @@
 ---
-title: Theme Switch
-description: A theme switch component that allows users to switch between light and dark themes.
+title: Theme Toggle
+description: A theme toggle component that allows users to switch between light and dark themes.
 ---
 
 <ComponentPreview>
@@ -33,12 +33,47 @@ npx shadcn@latest add button
 npx shadcn@latest add popover
 ```
 
+<Step>Initialize next-themes in your project.</Step>
+
+```tsx title="theme-provider"
+'use client'
+
+import * as React from 'react'
+import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { ThemeProviderProps } from 'next-themes/dist/types'
+
+export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+}
+```
+
+```tsx title="layout.tsx"
+import { ThemeProvider } from '@/components/theme'
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      {...}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
+      {...}
+    </html>
+  )
+}
+```
+
 <Step>Copy and paste the following code into your project.</Step>
 
+<CodeCollapsibleWrapper>
 ```tsx
 'use client'
 
-import { Moon, Sun, SunMoon } from 'lucide-react'
+import { Laptop, Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
 import { Button } from '@/components/ui/button'
@@ -65,7 +100,7 @@ const themeConfig = [
   },
   {
     label: 'System',
-    icon: <SunMoon className="h-4 w-4" />,
+    icon: <Laptop className="h-4 w-4" />,
     value: 'system',
   },
 ]
@@ -125,6 +160,7 @@ export default function ThemeToggle() {
   )
 }
 ```
+</CodeCollapsibleWrapper>
 
 <Step>Update the import paths to match your project setup.</Step>
 

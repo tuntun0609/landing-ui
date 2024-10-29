@@ -1,5 +1,5 @@
 export type DocsConfig = {
   title: string
-  href: string
+  href?: string
   items?: DocsConfig[]
 }

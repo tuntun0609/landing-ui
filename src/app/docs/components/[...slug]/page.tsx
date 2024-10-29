@@ -12,7 +12,9 @@ export const generateStaticParams = async () => {
   // 递归
   const getSlugs = (docs: DocsConfig) => {
     docs.items?.forEach(item => {
-      componentsSlugs.push(item.href)
+      if (item.href) {
+        componentsSlugs.push(item.href)
+      }
       if (item.items) {
         getSlugs(item)
       }
@@ -20,7 +22,6 @@ export const generateStaticParams = async () => {
   }
   getSlugs(componentsDocs)
   const slugs = componentsSlugs.map(slug => ({ slug: slug.split('/').slice(3) }))
-  console.log(slugs)
   return slugs
 }
 

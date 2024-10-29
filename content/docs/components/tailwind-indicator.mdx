@@ -1,0 +1,71 @@
+---
+title: Tailwind Indicator
+description: The Tailwind Indicator component is used to display the current Tailwind CSS breakpoint.
+---
+
+<ComponentPreview>
+  <ComponentPreviewContent name="TailwindIndicator" />
+  <ComponentPreviewCode>
+```tsx
+export function TailwindIndicator() {
+  if (process.env.NODE_ENV === 'production') {
+    return null
+  }
+
+  return (
+    <div className="fixed bottom-1 right-1 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 p-3 font-mono text-xs text-white">
+      <div className="block sm:hidden">xs</div>
+      <div className="hidden sm:block md:hidden lg:hidden xl:hidden 2xl:hidden">sm</div>
+      <div className="hidden md:block lg:hidden xl:hidden 2xl:hidden">md</div>
+      <div className="hidden lg:block xl:hidden 2xl:hidden">lg</div>
+      <div className="hidden xl:block 2xl:hidden">xl</div>
+      <div className="hidden 2xl:block">2xl</div>
+    </div>
+  )
+}
+
+TailwindIndicator.displayName = 'TailwindIndicator'
+```
+  </ComponentPreviewCode>
+</ComponentPreview>
+
+## Usage
+
+<Steps>
+
+<Step>Copy the code above and paste it into your project.</Step>
+
+```tsx
+export function TailwindIndicator() {
+  if (process.env.NODE_ENV === 'production') {
+    return null
+  }
+
+  return (
+    <div className="fixed bottom-1 right-1 z-50 flex h-6 w-6 items-center justify-center rounded-full bg-gray-800 p-3 font-mono text-xs text-white">
+      <div className="block sm:hidden">xs</div>
+      <div className="hidden sm:block md:hidden lg:hidden xl:hidden 2xl:hidden">sm</div>
+      <div className="hidden md:block lg:hidden xl:hidden 2xl:hidden">md</div>
+      <div className="hidden lg:block xl:hidden 2xl:hidden">lg</div>
+      <div className="hidden xl:block 2xl:hidden">xl</div>
+      <div className="hidden 2xl:block">2xl</div>
+    </div>
+  )
+}
+
+TailwindIndicator.displayName = 'TailwindIndicator'
+```
+
+<Step>Import the component into your project. And use it in your project somewhere.</Step>
+
+This will only be displayed in development mode. It will show the current breakpoint of the screen.
+
+```tsx
+import TailwindIndicator from '@/components/registry/tailwind-indicator'
+
+export default function Home() {
+  return <TailwindIndicator />
+}
+```
+
+</Steps>
