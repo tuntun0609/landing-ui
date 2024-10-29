@@ -6,7 +6,8 @@
     "dev": "next dev -p 8000",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky"
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.1",
@@ -45,11 +46,18 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,jsx,tsx}": [
+      "eslint --max-warnings=0"
+    ]
   },
   "pnpm": {
     "overrides": {
