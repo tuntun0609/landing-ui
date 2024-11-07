@@ -6,6 +6,8 @@ import { motion, Variants } from 'framer-motion'
 type FadeTextProps = {
   className?: string
   direction?: 'up' | 'down' | 'left' | 'right'
+  duration?: number
+  delay?: number
   framerProps?: Variants
   children: React.ReactNode
 }
@@ -13,9 +15,11 @@ type FadeTextProps = {
 export function FadeText({
   direction = 'up',
   className,
+  duration = 0.8,
+  delay = 0,
   framerProps = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { type: 'spring' } },
+    show: { opacity: 1, transition: { type: 'spring', duration, delay } },
   },
   children,
 }: FadeTextProps) {

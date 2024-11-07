@@ -17,4 +17,12 @@ export const componentPreviewConfig = {
     name: 'AppWrapper',
     demo: lazy(() => import('@/components/registry/app-wrapper/demo')),
   },
+  HyperText: {
+    name: 'HyperText',
+    demo: lazy(() => import('@/components/registry/hyper-text/demo')),
+  },
+  UnderlineText: {
+    name: 'UnderlineText',
+    demo: lazy(() => import('@/components/registry/underline-text/demo')),
+  },
 }

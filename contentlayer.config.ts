@@ -68,6 +68,6 @@ export default makeSource({
   },
   onSuccess: async importData => {
     // const { allDocs } = await importData()
-    // console.log(allDocs)
+    // console.log(allDocs.map(doc => doc.slug))
   },
 })

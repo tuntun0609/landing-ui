@@ -25,6 +25,18 @@ export const docsConfig: DocsConfig[] = [
         title: 'App Wrapper',
         href: '/docs/components/app-wrapper',
       },
+      {
+        title: 'Hyper Text',
+        href: '/docs/components/hyper-text',
+      },
+      // {
+      //   title: 'Common Header',
+      //   href: '/docs/components/common-header',
+      // },
+      {
+        title: 'Underline Text',
+        href: '/docs/components/underline-text',
+      },
     ],
   },
   {
