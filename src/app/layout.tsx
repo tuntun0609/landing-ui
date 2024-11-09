@@ -14,9 +14,6 @@ export const metadata: Metadata = {
   title: 'Landing UI',
   description: 'Build your landing page with Landing UI easy and fast',
   keywords: ['Tailwindcss', 'Framer Motion', 'Landing Page', 'Next.js', 'React', 'Shadcn/UI'],
-  icons: {
-    icon: '/image/logo.svg',
-  },
 }
 
 export default function RootLayout({
