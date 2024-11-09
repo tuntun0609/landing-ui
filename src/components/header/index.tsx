@@ -1,5 +1,4 @@
 'use client'
-import { useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -13,10 +12,6 @@ const Header = () => {
   const pathname = usePathname()
   // 是否滚动超过 100px
   const top = useScrollTop(10)
-
-  useEffect(() => {
-    console.log(top)
-  }, [top])
 
   return (
     <div

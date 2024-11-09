@@ -1,3 +1,4 @@
+import { Analytics } from '@/components/analytics'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
 import { TailwindIndicator } from '@/components/tailwind-Indicator'
@@ -25,16 +26,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta
+          name="google-site-verification"
+          content="Z42CCDW8go3yBEHauSeZ5Uw2ycicfXbp1Wgli-bv2vw"
+        />
+      </head>
       <body className={'font-sans antialiased'}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex min-h-screen flex-col">
             <Header />
             <div className="min-h-[calc(100vh-3.5rem)] border-b">{children}</div>
             <Footer />
-            <TailwindIndicator />
           </div>
+          <TailwindIndicator />
         </ThemeProvider>
       </body>
+      <Analytics />
     </html>
   )
 }
