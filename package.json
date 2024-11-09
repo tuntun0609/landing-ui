@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@dotlottie/react-player": "^1.6.19",
@@ -26,6 +27,7 @@
     "lucide-react": "^0.453.0",
     "next": "15.0.2",
     "next-contentlayer2": "^0.5.3",
+    "next-sitemap": "^4.2.3",
     "next-themes": "^0.3.0",
     "pliny": "^0.3.2",
     "react": "19.0.0-rc-603e6108-20241029",
