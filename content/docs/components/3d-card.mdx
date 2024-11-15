@@ -1,0 +1,116 @@
+---
+title: 3D Card
+description: 3D Card component
+---
+
+<ComponentPreview>
+  <ComponentPreviewContent name="ThreeDCard" />
+  <ComponentPreviewCode>
+```tsx
+const ThreeDCardDemo = () => (
+  <ThreeDCard className="h-auto w-[300px]" rotateSize="large">
+    <div className="flex flex-col items-center justify-center p-4">
+      <Image
+        className="w-full rounded-xl"
+        src="/image/background-case.jpg"
+        alt="3d-card-image-case"
+        width={300}
+        height={200}
+      />
+      <div className="mt-5 w-full text-start text-2xl font-bold">Whispers of Eternal</div>
+      <div className="mt-2 w-full text-start">
+        In the depths of silence, beauty speaks its most profound truths, echoing through the
+        chambers of our hearts like whispers of eternity.
+      </div>
+    </div>
+  </ThreeDCard>
+)
+
+export default ThreeDCardDemo
+```
+  </ComponentPreviewCode>
+</ComponentPreview>
+
+
+## Usage
+
+<Steps>
+
+<Step>Copy the component to your project.</Step>
+<CodeCollapsibleWrapper>
+```tsx
+'use client'
+
+import { useRef } from 'react'
+
+import { cn } from '@/lib/utils'
+
+function ThreeDCard({
+  children,
+  rotateSize = 'medium',
+  className,
+}: {
+  children: React.ReactNode
+  rotateSize?: 'small' | 'medium' | 'large' | number
+  className?: string
+}) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const rotateSizeMap = {
+    small: 30,
+    medium: 20,
+    large: 10,
+  }
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) {
+      return
+    }
+    const rotateSizeNumber = typeof rotateSize === 'number' ? rotateSize : rotateSizeMap[rotateSize]
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect()
+    const x = (e.clientX - left - width / 2) / rotateSizeNumber
+    const y = (e.clientY - top - height / 2) / rotateSizeNumber
+    containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`
+  }
+
+  const handleMouseLeave = () => {
+    if (!containerRef.current) {
+      return
+    }
+    containerRef.current.style.transform = 'rotateY(0deg) rotateX(0deg)'
+  }
+
+  return (
+    <div style={{ perspective: '1000px' }} className="flex items-center justify-center">
+      <div
+        className={cn(
+          'relative min-h-[100px] min-w-[100px] rounded-md border border-gray-200 bg-background transition-all duration-200 ease-linear dark:border-gray-900',
+          className
+        )}
+        style={{
+          transformStyle: 'preserve-3d',
+        }}
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        {children}
+      </div>
+    </div>
+  )
+}
+
+ThreeDCard.displayName = 'ThreeDCard'
+
+export default ThreeDCard
+```
+</CodeCollapsibleWrapper>
+
+<Step>Customize styles</Step>
+
+You can override the default styles by setting `className`. You can also pass `rotateSize` to adjust the rotation degree.
+
+The `rotateSize` prop accepts `small` | `medium` | `large` | number
+
+When passing a number, a larger number will result in a smaller rotation angle.
+
+</Steps>

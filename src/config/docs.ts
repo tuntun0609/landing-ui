@@ -37,6 +37,10 @@ export const docsConfig: DocsConfig[] = [
         title: 'Underline Text',
         href: '/docs/components/underline-text',
       },
+      {
+        title: '3D Card',
+        href: '/docs/components/3d-card',
+      },
     ],
   },
   {

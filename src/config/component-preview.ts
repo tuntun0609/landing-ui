@@ -25,4 +25,8 @@ export const componentPreviewConfig = {
     name: 'UnderlineText',
     demo: lazy(() => import('@/components/registry/underline-text/demo')),
   },
+  ThreeDCard: {
+    name: 'ThreeDCard',
+    demo: lazy(() => import('@/components/registry/3d-card/demo')),
+  },
 }
