@@ -25,6 +25,15 @@ export const generateStaticParams = async () => {
   return slugs
 }
 
+export const generateMetadata = async ({ params }: { params: Promise<{ slug: string[] }> }) => {
+  const { slug } = await params
+  const doc = allDocs.find(doc => doc.slugAsParams === `components/${slug.join('/')}`)
+  return {
+    title: `${doc?.title} - Landing UI`,
+    description: doc?.description,
+  }
+}
+
 export default async function Components({ params }: { params: Promise<{ slug: string[] }> }) {
   const { slug } = await params
   const doc = allDocs.find(doc => doc.slugAsParams === `components/${slug.join('/')}`)
