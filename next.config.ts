@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  webpack(config) {
+  webpack(config, { isServer }) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule: any) => rule.test?.test?.('.svg'))
 
@@ -36,7 +36,15 @@ const nextConfig: NextConfig = {
     fileLoaderRule.exclude = /\.svg$/i
 
     // 添加eslint-webpack-plugin插件
-    config.plugins.push(new ESLintPlugin())
+    if (!isServer) {
+      config.plugins.push(
+        new ESLintPlugin({
+          extensions: ['js', 'jsx', 'ts', 'tsx'],
+          exclude: ['node_modules', '.next', 'out'],
+          failOnError: false,
+        })
+      )
+    }
 
     return config
   },
