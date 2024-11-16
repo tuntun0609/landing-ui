@@ -1,0 +1,163 @@
+---
+title: Avatar
+description: Avatar is a component that displays a user's profile picture.
+---
+
+<ComponentPreview>
+  <ComponentPreviewContent name="Avatar" />
+  <ComponentPreviewCode>
+```tsx
+const avatarUrls = [
+  { url: 'https://avatars.githubusercontent.com/u/56946732' },
+  { url: 'https://avatars.githubusercontent.com/u/499550' },
+  { url: 'https://avatars.githubusercontent.com/u/11247099' },
+  { url: 'https://avatars.githubusercontent.com/u/810438' },
+]
+
+const AvatarDemo = () => (
+  <div className="flex flex-col gap-4">
+    <Avatar numPeople={10} avatarUrls={avatarUrls} />
+    <div>
+      <div className="mb-2 text-sm text-gray-500">Avatar highlight on hover: </div>
+      <Avatar isHoverable numPeople={10} avatarUrls={avatarUrls} />
+    </div>
+    <div>
+      <div className="mb-2 text-sm text-gray-500">Avatar with tooltip: </div>
+      <Avatar
+        numPeople={10}
+        avatarUrls={avatarUrls.map((item, index) => ({
+          url: item.url,
+          tooltip: `Avatar ${index}`,
+        }))}
+      />
+    </div>
+    <div>
+      <div className="mb-2 text-sm text-gray-500">Avatar with clickable: </div>
+      <Avatar
+        isHoverable
+        numPeople={10}
+        avatarUrls={avatarUrls.map((item, index) => ({
+          url: item.url,
+          onClick: () => alert(`Avatar ${index + 1} clicked`),
+        }))}
+      />
+    </div>
+  </div>
+)
+```
+  </ComponentPreviewCode>
+</ComponentPreview>
+
+## Usage
+
+<Steps>
+
+<Step>Copy the component to your project.</Step>
+<CodeCollapsibleWrapper>
+```tsx
+'use client'
+
+import React from 'react'
+import Image from 'next/image'
+
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { cn } from '@/lib/utils'
+
+interface AvatarItem {
+  url: string
+  tooltip?: string
+  onClick?: React.MouseEventHandler<HTMLImageElement>
+  className?: string
+}
+
+interface AvatarProps {
+  className?: string
+  numPeople?: number
+  avatarUrls: AvatarItem[]
+  isHoverable?: boolean
+  onClickAll?: React.MouseEventHandler<HTMLDivElement>
+}
+
+const Avatar = ({
+  numPeople,
+  className,
+  avatarUrls,
+  isHoverable = false,
+  onClickAll,
+}: AvatarProps) => (
+  <TooltipProvider>
+    <div className={cn('z-10 flex', className)}>
+      {avatarUrls.map((item, index) =>
+        item.tooltip ? (
+          <Tooltip key={index}>
+            <TooltipTrigger asChild>
+              <Image
+                className={cn(
+                  'z-1 relative -mr-4 h-10 w-10 rounded-full border-2 border-white dark:border-gray-800',
+                  isHoverable && 'hover:z-20',
+                  item.onClick && 'cursor-pointer',
+                  item.className
+                )}
+                src={item.url}
+                width={40}
+                height={40}
+                alt={item.tooltip ?? item.url}
+                onClick={item.onClick}
+              />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{item.tooltip}</p>
+            </TooltipContent>
+          </Tooltip>
+        ) : (
+          <Image
+            key={index}
+            className={cn(
+              'z-1 relative -mr-4 h-10 w-10 rounded-full border-2 border-white dark:border-gray-800',
+              isHoverable && 'hover:z-20',
+              item.onClick && 'cursor-pointer',
+              item.className
+            )}
+            src={item.url}
+            width={40}
+            height={40}
+            alt={item.tooltip ?? item.url}
+            onClick={item.onClick}
+          />
+        )
+      )}
+      <div
+        className="z-2 relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-2 border-white bg-black text-center text-xs font-medium text-white hover:bg-gray-600 dark:border-gray-800 dark:bg-white dark:text-black"
+        onClick={onClickAll}
+      >
+        +{numPeople}
+      </div>
+    </div>
+  </TooltipProvider>
+)
+
+export default Avatar
+```
+</CodeCollapsibleWrapper>
+
+<Step>Import the component.</Step>
+
+props:
+```tsx
+interface AvatarItem {
+  url: string // Avatar URL
+  tooltip?: string // Tooltip text
+  onClick?: React.MouseEventHandler<HTMLImageElement> // Click event, if provided, the cursor will be pointer
+  className?: string // Customize the avatar class
+}
+
+interface AvatarProps {
+  className?: string // Customize the container class
+  numPeople?: number // Number of people
+  avatarUrls: AvatarItem[] // Avatar URLs
+  isHoverable?: boolean // Whether to highlight on hover
+  onClickAll?: React.MouseEventHandler<HTMLDivElement> // Click event for other avatars
+}
+```
+
+</Steps>

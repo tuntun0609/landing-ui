@@ -29,4 +29,8 @@ export const componentPreviewConfig = {
     name: 'ThreeDCard',
     demo: lazy(() => import('@/components/registry/3d-card/demo')),
   },
+  Avatar: {
+    name: 'Avatar',
+    demo: lazy(() => import('@/components/registry/avatar/demo')),
+  },
 }
