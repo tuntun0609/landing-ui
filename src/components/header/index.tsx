@@ -1,4 +1,5 @@
 'use client'
+import { Github } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -7,6 +8,7 @@ import { cn } from '@/lib/utils'
 import Logo from '@public/image/logo.svg'
 
 import { ThemeToggle } from '../theme'
+import { Button } from '../ui/button'
 
 const Header = () => {
   const pathname = usePathname()
@@ -48,7 +50,14 @@ const Header = () => {
             </Link>
           </nav>
         </div>
-        <ThemeToggle />
+        <div className="flex items-center">
+          <Link target="_blank" href="https://github.com/tuntun0609/landing-ui">
+            <Button variant="ghost" size="sm" className="h-10 w-10 p-0">
+              <Github className="h-4 w-4" />
+            </Button>
+          </Link>
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   )
