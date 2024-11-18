@@ -33,4 +33,8 @@ export const componentPreviewConfig = {
     name: 'Avatar',
     demo: lazy(() => import('@/components/registry/avatar/demo')),
   },
+  Marquee: {
+    name: 'Marquee',
+    demo: lazy(() => import('@/components/registry/marquee/demo')),
+  },
 }

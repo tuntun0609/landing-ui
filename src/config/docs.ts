@@ -45,6 +45,10 @@ export const docsConfig: DocsConfig[] = [
         title: 'Avatar',
         href: '/docs/components/avatar',
       },
+      {
+        title: 'Marquee',
+        href: '/docs/components/marquee',
+      },
     ],
   },
   {
