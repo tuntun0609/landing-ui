@@ -49,6 +49,10 @@ export const docsConfig: DocsConfig[] = [
         title: 'Marquee',
         href: '/docs/components/marquee',
       },
+      {
+        title: 'Youtube Dialog',
+        href: '/docs/components/youtube-dialog',
+      },
     ],
   },
   {

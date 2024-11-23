@@ -3,7 +3,6 @@ module.exports = {
     'next/core-web-vitals',
     'next/typescript',
     'plugin:prettier/recommended',
-    'plugin:prettier/recommended',
     'plugin:import/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',

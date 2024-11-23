@@ -37,4 +37,8 @@ export const componentPreviewConfig = {
     name: 'Marquee',
     demo: lazy(() => import('@/components/registry/marquee/demo')),
   },
+  YoutubeDialog: {
+    name: 'YoutubeDialog',
+    demo: lazy(() => import('@/components/registry/youtube-dialog/demo')),
+  },
 }
