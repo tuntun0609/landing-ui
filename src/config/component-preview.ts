@@ -41,4 +41,8 @@ export const componentPreviewConfig = {
     name: 'YoutubeDialog',
     demo: lazy(() => import('@/components/registry/youtube-dialog/demo')),
   },
+  Pagination: {
+    name: 'Pagination',
+    demo: lazy(() => import('@/components/registry/pagination/demo')),
+  },
 }
