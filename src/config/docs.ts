@@ -53,6 +53,10 @@ export const docsConfig: DocsConfig[] = [
         title: 'Youtube Dialog',
         href: '/docs/components/youtube-dialog',
       },
+      {
+        title: 'Pagination',
+        href: '/docs/components/pagination',
+      },
     ],
   },
   {

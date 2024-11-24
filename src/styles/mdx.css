@@ -1,101 +1,101 @@
 code[data-line-numbers] {
-	counter-reset: line;
+  counter-reset: line;
 }
 
-code[data-line-numbers]>[data-line]::before {
-	counter-increment: line;
-	content: counter(line);
-	@apply inline-block w-4 mr-4 text-right text-gray-500;
+code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply mr-4 inline-block w-4 text-right text-gray-500;
 }
 
 .prose {
-	@apply max-w-[55rem] sm:text-lg md:text-xl;
+  @apply max-w-[55rem] sm:text-lg md:text-xl;
 }
 
 pre [data-line] {
-	@apply px-1 border-l-2 border-l-transparent;
+  @apply border-l-2 border-l-transparent px-1;
 }
 
 [data-highlighted-line] {
-	background: rgba(200, 200, 255, 0.1);
-	@apply border-l-blue-400;
+  background: rgba(200, 200, 255, 0.1);
+  @apply border-l-blue-400;
 }
 
 [data-highlighted-chars] {
-	@apply bg-zinc-600/50 rounded;
-	box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
+  @apply rounded bg-zinc-600/50;
+  box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
 }
 
 [data-chars-id] {
-	@apply shadow-none p-1 border-b-2;
+  @apply border-b-2 p-1 shadow-none;
 }
 
 [data-chars-id] span {
-	@apply !text-inherit;
+  @apply !text-inherit;
 }
 
 [data-chars-id='v'] {
-	@apply !text-pink-300 bg-rose-800/50 border-b-pink-600 font-bold;
+  @apply border-b-pink-600 bg-rose-800/50 font-bold !text-pink-300;
 }
 
 [data-chars-id='s'] {
-	@apply !text-yellow-300 bg-yellow-800/50 border-b-yellow-600 font-bold;
+  @apply border-b-yellow-600 bg-yellow-800/50 font-bold !text-yellow-300;
 }
 
 [data-chars-id='i'] {
-	@apply !text-purple-200 bg-purple-800/50 border-b-purple-600 font-bold;
+  @apply border-b-purple-600 bg-purple-800/50 font-bold !text-purple-200;
 }
 
 [data-rehype-pretty-code-title] {
-	@apply bg-zinc-700 text-zinc-200 rounded-t-lg py-2 px-3 font-semibold text-sm;
+  @apply rounded-t-lg bg-zinc-700 px-3 py-2 text-sm font-semibold text-zinc-200;
 }
 
 figure[data-rehype-pretty-code-figure]:has(> [data-rehype-pretty-code-title]) pre {
-	@apply !rounded-t-none;
+  @apply !rounded-t-none;
 }
 
 figure {
-	@apply mb-4;
+  @apply mb-4;
 }
 
 pre,
 code,
 figure {
-	@apply overflow-x-auto;
+  @apply overflow-x-auto;
 }
 
 pre code {
-	@apply !bg-transparent;
+  @apply !bg-transparent;
 }
 
 .content-header-link {
-	transition: opacity 0.15s;
-	opacity: 0;
-	margin-left: -24px;
-	padding-right: 4px;
-	@apply text-purple-600;
+  transition: opacity 0.15s;
+  opacity: 0;
+  margin-left: -24px;
+  padding-right: 4px;
+  @apply text-purple-600;
 }
 
 .content-header:hover .content-header-link,
 .content-header-link:hover {
-	opacity: 1;
+  opacity: 1;
 }
 
 .linkIcon {
-	display: inline-block;
-	vertical-align: middle;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .article ul {
-	list-style: disc;
+  list-style: disc;
 }
 
 .article ul ul {
-	@apply mt-3;
-	list-style: circle;
+  @apply mt-3;
+  list-style: circle;
 }
 
 .article ul ul ul {
-	@apply mt-3;
-	list-style: square;
+  @apply mt-3;
+  list-style: square;
 }
