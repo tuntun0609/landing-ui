@@ -1,26 +1,68 @@
 'use client'
 
 import { useEffect, useMemo, useState } from 'react'
-
 import {
-  Pagination as UIPagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination'
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+  MoreHorizontal,
+} from 'lucide-react'
+
+import { Button, ButtonProps } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 export interface PaginationProps {
   totalPages: number
   currentPage?: number
   onPageChange?: (page: number) => void
   defaultCurrentPage?: number
-  showCount?: number
 }
 
 const isNil = (value: any): value is null | undefined => value === null || value === undefined
+
+const PaginationContainer = ({ children }: { children: React.ReactNode }) => (
+  <div className="flex items-center gap-1">{children}</div>
+)
+
+const PaginationItem = ({
+  children,
+  isActive,
+  ...props
+}: ButtonProps & {
+  isActive?: boolean
+}) => (
+  <Button
+    {...props}
+    className={cn('flex h-10 w-10 items-center justify-center p-0', props.className)}
+    variant={isActive ? 'outline' : 'ghost'}
+  >
+    {children}
+  </Button>
+)
+
+const PaginationEllipsis = ({
+  hoverIcon,
+  onClick,
+}: {
+  hoverIcon?: React.ReactNode
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
+}) => (
+  <PaginationItem className="group relative hover:bg-transparent" variant="link" onClick={onClick}>
+    <MoreHorizontal
+      className={cn(
+        'h-4 w-4 transition-opacity duration-200',
+        !isNil(hoverIcon) && 'group-hover:opacity-0'
+      )}
+    />
+    {!isNil(hoverIcon) && (
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+        {hoverIcon}
+      </div>
+    )}
+    <span className="sr-only">More pages</span>
+  </PaginationItem>
+)
 
 const Pagination = ({
   totalPages,
@@ -28,13 +70,22 @@ const Pagination = ({
   onPageChange,
   defaultCurrentPage,
 }: PaginationProps) => {
-  const [cmpCurrentPage, setCmpCurrentPage] = useState(defaultCurrentPage ?? 1)
+  const [cmpCurrentPage, setCmpCurrentPage] = useState(defaultCurrentPage ?? currentPage ?? 1)
 
   const handlePageChange = (page: number) => {
     if (isNil(currentPage)) {
       setCmpCurrentPage(page)
     }
     onPageChange?.(page)
+  }
+
+  const formatPage = (page: number) => {
+    if (page < 1) {
+      return 1
+    } else if (page > totalPages) {
+      return totalPages
+    }
+    return page
   }
 
   const showPreEllipsis = useMemo(
@@ -62,51 +113,64 @@ const Pagination = ({
   }, [currentPage])
 
   return (
-    <UIPagination>
-      <PaginationContent>
-        <PaginationItem
+    <PaginationContainer>
+      <PaginationItem
+        onClick={() => {
+          if (cmpCurrentPage === 1) {
+            return
+          }
+          handlePageChange(cmpCurrentPage - 1)
+        }}
+        disabled={cmpCurrentPage === 1}
+      >
+        <ChevronLeft className="h-4 w-4" />
+      </PaginationItem>
+
+      {showPreEllipsis && (
+        <PaginationEllipsis
+          hoverIcon={<ChevronsLeft className="h-4 w-4" />}
           onClick={() => {
-            if (cmpCurrentPage === 1) {
+            handlePageChange(formatPage(cmpCurrentPage - 3))
+          }}
+        />
+      )}
+
+      {showPages.map(pageNum => (
+        <PaginationItem
+          key={pageNum}
+          isActive={pageNum === cmpCurrentPage}
+          onClick={() => {
+            if (pageNum === totalPages) {
               return
             }
-            handlePageChange(cmpCurrentPage - 1)
+            handlePageChange(pageNum)
           }}
         >
-          <PaginationPrevious href="#" />
+          {pageNum}
         </PaginationItem>
+      ))}
 
-        {showPreEllipsis && (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-        )}
-
-        {showPages.map(pageNum => (
-          <PaginationItem key={pageNum}>
-            <PaginationLink href="#" isActive={pageNum === cmpCurrentPage}>
-              {pageNum}
-            </PaginationLink>
-          </PaginationItem>
-        ))}
-
-        {showNextEllipsis && (
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-        )}
-
-        <PaginationItem
+      {showNextEllipsis && (
+        <PaginationEllipsis
+          hoverIcon={<ChevronsRight className="h-4 w-4" />}
           onClick={() => {
-            if (cmpCurrentPage === totalPages) {
-              return
-            }
-            handlePageChange(cmpCurrentPage + 1)
+            handlePageChange(formatPage(cmpCurrentPage + 3))
           }}
-        >
-          <PaginationNext href="#" />
-        </PaginationItem>
-      </PaginationContent>
-    </UIPagination>
+        />
+      )}
+
+      <PaginationItem
+        onClick={() => {
+          if (cmpCurrentPage === totalPages) {
+            return
+          }
+          handlePageChange(cmpCurrentPage + 1)
+        }}
+        disabled={cmpCurrentPage === totalPages}
+      >
+        <ChevronRight className="h-4 w-4" />
+      </PaginationItem>
+    </PaginationContainer>
   )
 }
 
