@@ -3,6 +3,7 @@ import Footer from '@/components/footer'
 import Header from '@/components/header'
 import { TailwindIndicator } from '@/components/tailwind-Indicator'
 import { ThemeProvider } from '@/components/theme'
+import { Toaster } from '@/components/ui/sonner'
 
 import type { Metadata } from 'next'
 
@@ -37,6 +38,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <TailwindIndicator />
+          <Toaster />
         </ThemeProvider>
       </body>
       <Analytics />

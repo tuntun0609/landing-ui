@@ -57,6 +57,10 @@ export const docsConfig: DocsConfig[] = [
         title: 'Pagination',
         href: '/docs/components/pagination',
       },
+      {
+        title: 'Background',
+        href: '/docs/components/background',
+      },
     ],
   },
   {
