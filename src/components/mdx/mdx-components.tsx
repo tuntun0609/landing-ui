@@ -6,6 +6,7 @@ import {
   ComponentPreviewCode,
   ComponentPreviewContent,
 } from '../component-preview'
+import { Background, BackgroundCase } from '../registry/background'
 import { Step, Steps } from '../step'
 
 import { CodeCollapsibleWrapper } from './code-collapsible-wrapper'
@@ -80,6 +81,8 @@ const MDXComponents: MDXComponentsType = {
   Step,
   Steps,
   CodeCollapsibleWrapper,
+  BackgroundCase,
+  Background,
 }
 
 export default MDXComponents
