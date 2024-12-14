@@ -20,7 +20,7 @@ export const BackgroundCase = ({
     }
   }
   return (
-    <div className="relative h-[300px] w-full overflow-hidden rounded-xl border border-gray-200">
+    <div className="relative h-[300px] w-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800">
       {children}
       <Button
         variant="outline"
